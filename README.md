@@ -3,6 +3,7 @@
 ## Community Events Hub and Online Marketplace
 
 ### Objective
+
 Create a platform for organizing and discovering local community events. The webpage should include a section that is an online marketplace. Build a platform for buying and selling products.
 
 ### Technologies
