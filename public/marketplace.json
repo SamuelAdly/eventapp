@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "name": "Handmade Mug",
+      "description": "A beautifully handcrafted ceramic mug.",
+      "price": 25.00,
+      "image": "/mug.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Wool Scarf",
+      "description": "A cozy wool scarf for the winter season.",
+      "price": 40.00,
+      "image": "/scarf.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Art Print",
+      "description": "A vibrant art print for your home decor.",
+      "price": 30.00,
+      "image": "/art-print.jpg"
+    }
+  ]
+  

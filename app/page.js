@@ -1,17 +1,6 @@
-
-
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-600 text-white">
-      <header className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">EventApp</h1>
-        <nav>
-          <button className="px-4 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100">
-            Log In
-          </button>
-        </nav>
-      </header>
       <section className="container mx-auto px-6 py-16 text-center">
         <h2 className="text-4xl font-bold mb-6">
           Discover & Organize Local Community Events
