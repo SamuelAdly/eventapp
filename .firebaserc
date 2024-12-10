@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "dev": "eventapp-dev-a7d22",
+    "prod": "eventapp-prod-1fd1f",
+    "default": "eventapp-prod-1fd1f"
+  }
+}
