@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "title": "Yoga Class",
+    "date": "2024-12-10",
+    "location": { "lat": 40.7128, "lng": -74.006 },
+    "description": "Join us for a relaxing yoga session in the park."
+  },
+  {
+    "id": 2,
+    "title": "Art Fair",
+    "date": "2024-12-15",
+    "location": { "lat": 40.7306, "lng": -73.9352 },
+    "description": "Explore local art and meet the artists."
+  },
+  {
+    "id": 3,
+    "title": "Tech Meetup",
+    "date": "2024-12-20",
+    "location": { "lat": 37.7749, "lng": -122.4194 },
+    "description": "Network with tech enthusiasts and learn about emerging technologies."
+  },
+  {
+    "id": 4,
+    "title": "Farmers Market",
+    "date": "2024-12-11",
+    "location": { "lat": 34.0522, "lng": -118.2437 },
+    "description": "Fresh produce and homemade goods from local farmers."
+  },
+  {
+    "id": 5,
+    "title": "Book Club Meeting",
+    "date": "2024-12-12",
+    "location": { "lat": 41.8781, "lng": -87.6298 },
+    "description": "Discuss our book of the month with fellow readers."
+  },
+  {
+    "id": 6,
+    "title": "Outdoor Movie Night",
+    "date": "2024-12-18",
+    "location": { "lat": 36.1699, "lng": -115.1398 },
+    "description": "Watch a classic film under the stars. Bring your own blanket!"
+  },
+  {
+    "id": 7,
+    "title": "Music Festival",
+    "date": "2024-12-25",
+    "location": { "lat": 29.7604, "lng": -95.3698 },
+    "description": "A day of music, food, and fun with performances from local bands."
+  },
+  {
+    "id": 8,
+    "title": "Cooking Workshop",
+    "date": "2024-12-22",
+    "location": { "lat": 39.7392, "lng": -104.9903 },
+    "description": "Learn to cook delicious meals with a professional chef."
+  },
+  {
+    "id": 9,
+    "title": "Charity Run",
+    "date": "2024-12-30",
+    "location": { "lat": 25.7617, "lng": -80.1918 },
+    "description": "Join us for a 5K run to support a good cause."
+  },
+  {
+    "id": 10,
+    "title": "Photography Exhibition",
+    "date": "2024-12-14",
+    "location": { "lat": 47.6062, "lng": -122.3321 },
+    "description": "Showcasing stunning photography from around the world."
+  },
+  {
+    "id": 11,
+    "title": "Chess Tournament",
+    "date": "2024-12-19",
+    "location": { "lat": 40.4406, "lng": -79.9959 },
+    "description": "Test your skills against the best chess players in the community."
+  },
+  {
+    "id": 12,
+    "title": "Community Cleanup",
+    "date": "2024-12-13",
+    "location": { "lat": 32.7157, "lng": -117.1611 },
+    "description": "Help us beautify our neighborhood by cleaning up parks and streets."
+  },
+  {
+    "id": 13,
+    "title": "Dance Workshop",
+    "date": "2024-12-16",
+    "location": { "lat": 39.9526, "lng": -75.1652 },
+    "description": "Learn fun dance moves in a friendly and energetic environment."
+  },
+  {
+    "id": 14,
+    "title": "Gardening Basics",
+    "date": "2024-12-09",
+    "location": { "lat": 30.2672, "lng": -97.7431 },
+    "description": "Learn how to start and maintain your own garden."
+  },
+  {
+    "id": 15,
+    "title": "Holiday Craft Fair",
+    "date": "2024-12-23",
+    "location": { "lat": 38.9072, "lng": -77.0369 },
+    "description": "Buy unique holiday gifts made by local artisans."
+  }
+]
+
+
