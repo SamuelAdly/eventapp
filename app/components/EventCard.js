@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const EventCard = ({localEvent, onRSVP}) => {
-     const {id, title, date, location, description} = localEvent;
+    const {id, title, date, location, description} = localEvent;
 
     return(
         <div className="max-w-sm p-4 border rounded shadow-lg bg-white text-black">
