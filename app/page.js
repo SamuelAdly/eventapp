@@ -1,5 +1,9 @@
+"use client"
+
+
 export default function Home() {
   return (
+    
     <div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-600 text-white">
       <section className="container mx-auto px-6 py-16 text-center">
         <h2 className="text-4xl font-bold mb-6">
@@ -17,7 +21,9 @@ export default function Home() {
             </a>
           </button>
           <button className="px-6 py-3 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100">
+            <a href="/organize">
               Create an Event
+            </a>
             
           </button>
         </div>
@@ -47,6 +53,7 @@ export default function Home() {
         <p>&copy; {new Date().getFullYear()} EventApp. All rights reserved.</p>
       </footer>
       
+
     </div>
   );
 }
