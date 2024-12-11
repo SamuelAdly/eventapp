@@ -1,6 +1,8 @@
 'use client';
-import React, {useEffect, useState} from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 import EventCard from "../components/EventCard";
+import { db } from '../firebase';
 
 
 
@@ -8,15 +10,17 @@ import EventCard from "../components/EventCard";
 const EventList = () => {
     
     const [events, setEvents] = useState([]);
-    
-    useEffect(() => {
-      const fetchEvents = async () => {
-        const response = await fetch("/events.json"); 
-        const data = await response.json();
-        setEvents(data);
-      };
-      fetchEvents();
-    }, []);
+        useEffect(() => {
+            const fetchEvents = async () => {
+                try {
+                    const docsRef = await getDocs(collection(db, "events"));
+                    setEvents(docsRef.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+                } catch (error) {
+                    console.error("Failed to fetch items:", error);
+                }
+            };
+            fetchEvents();
+        }, []);
 
     const handleRSVP = (eventId) => {
         alert(`RSVPed to event ID : ${eventId}`);
