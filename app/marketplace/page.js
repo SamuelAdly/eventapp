@@ -1,9 +1,17 @@
 "use client";
+import { FaPlusCircle } from "react-icons/fa";
+import { MdCancel } from "react-icons/md";
+import { MdSell } from "react-icons/md";
 import {
     addDoc,
     collection,
+    deleteDoc,
+    doc,
     getDocs,
     serverTimestamp,
+    updateDoc,
+    query,
+    where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import MarketplaceCard from "../components/MarketplaceCard";
@@ -20,13 +28,13 @@ export default function Marketplace() {
         price: "",
         image: "",
     });
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         const fetchItems = async () => {
             try {
                 const docsRef = await getDocs(collection(db, "items"));
-                console.log("Items found: ", docsRef.size);
-                setItems(...items, docsRef.docs.map(doc => doc.data()));
+                setItems(docsRef.docs.map(doc => ({ id: doc.id, ...doc.data() })));
             } catch (error) {
                 console.error("Failed to fetch items:", error);
             }
@@ -47,8 +55,7 @@ export default function Marketplace() {
         };
         try {
             const docRef = await addDoc(collection(db, "items"), item);
-            console.log("Document written with ID: ", docRef.id);
-            setItems(prevItems => [item, ...prevItems]);
+            setItems(prevItems => [{ id: docRef.id, ...item }, ...prevItems]);
             setNewItem({ name: "", description: "", price: "", image: "" });
         } catch (e) {
             console.error("Error adding document: ", e);
@@ -61,6 +68,34 @@ export default function Marketplace() {
         setNewItem(prev => ({ ...prev, [name]: value }));
     };
 
+    const handleDeleteItem = async (itemId) => {
+        try {
+            await deleteDoc(doc(db, "items", itemId));
+            setItems(items.filter(item => item.id !== itemId));
+        } catch (e) {
+            console.error("Error deleting item: ", e);
+        }
+    };
+
+    const handleUpdateItem = async (itemId, updatedItem) => {
+        try {
+            const itemRef = doc(db, "items", itemId);
+            await updateDoc(itemRef, updatedItem);
+            setItems(items.map(item => (item.id === itemId ? { ...item, ...updatedItem } : item)));
+        } catch (e) {
+            console.error("Error updating item: ", e);
+        }
+    };
+
+    const handleSearch = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredItems = items.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-600 text-white">
             <section className="container mx-auto px-6 py-16 text-center">
@@ -68,20 +103,26 @@ export default function Marketplace() {
                 <p className="text-lg font-medium">
                     Explore and purchase items from our community marketplace.
                 </p>
-                <button
-                    onClick={() => setShowModal(true)}
-                    className="mt-4 px-6 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100"
-                >
-                    Add Item
-                </button>
+                <input
+                    type="text"
+                    placeholder="Search items..."
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    className="mt-4 px-6 py-2 bg-white text-blue-500 font-semibold rounded shadow w-full max-w-md"
+                />
             </section>
+            <button
+                onClick={() => setShowModal(true)}
+                className="flex fixed bottom-6 right-6 px-2 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100 items-center justify-center space-x-2"
+            >
+                <MdSell className="text-xl" />
+                <span>Sell an Item</span>
+            </button>
 
             {showModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white text-gray-800 rounded-lg p-6 w-96">
-                        <h3 className="text-xl font-bold mb-4">
-                            Add a New Item
-                        </h3>
+                        <h3 className="text-xl font-bold mb-4">Add a New Item</h3>
                         <form onSubmit={handleAddItem}>
                             <div className="mb-4">
                                 <input
@@ -131,15 +172,15 @@ export default function Marketplace() {
                                 <button
                                     type="button"
                                     onClick={() => setShowModal(false)}
-                                    className="px-4 py-2 bg-gray-300 text-gray-800 rounded shadow hover:bg-gray-400"
+                                    className="px-4 py-2 bg-red-500 text-white rounded shadow hover:bg-red-600"
                                 >
-                                    Cancel
+                                    <MdCancel/>
                                 </button>
                                 <button
                                     type="submit"
                                     className="px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600"
                                 >
-                                    Add Item
+                                    <FaPlusCircle/>
                                 </button>
                             </div>
                         </form>
@@ -148,17 +189,20 @@ export default function Marketplace() {
             )}
 
             <div className="container mx-auto p-6">
-                {items.length == 0 ? (
+                {filteredItems.length === 0 ? (
                     <div className="flex justify-center items-center">
                         <p className="text-xl font-medium">No items found.</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-3 gap-6">
-                        {items.map(item => (
+                        {filteredItems.map(item => (
                             <MarketplaceCard
-                                key={item.name}
+                                key={item.id}
                                 item={item}
                                 onPurchase={handlePurchase}
+                                onDelete={() => handleDeleteItem(item.id)}
+                                onUpdate={(updatedItem) => handleUpdateItem(item.id, updatedItem)}
+                                isOwner={authUser?.uid === item.uid}
                             />
                         ))}
                     </div>
