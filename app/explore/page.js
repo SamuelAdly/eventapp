@@ -36,7 +36,7 @@ const EventList = () => {
             </section>
             <a href='/organize'>
                 <button
-                    className="flex fixed bottom-6 right-6 px-2 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100 items-center justify-center space-x-2"
+                    className="flex fixed bottom-6 right-6 px-2 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-300 items-center justify-center space-x-2"
                 >
                     <FaCirclePlus className="text-xl" />
                     <span>Create Event</span>
