@@ -3,6 +3,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import EventCard from "../components/EventCard";
 import { db } from '../firebase';
+import { FaCirclePlus } from "react-icons/fa6";
+
 
 
 
@@ -32,6 +34,14 @@ const EventList = () => {
             <section className="container mx-auto px-6 py-16 text-center">
                 <h1 className="text-4xl font-bold mb-6">Community Events</h1>
             </section>
+            <a href='/organize'>
+                <button
+                    className="flex fixed bottom-6 right-6 px-2 py-2 bg-white text-blue-500 font-semibold rounded shadow hover:bg-gray-100 items-center justify-center space-x-2"
+                >
+                    <FaCirclePlus className="text-xl" />
+                    <span>Create Event</span>
+                </button>
+            </a>
             { /* Events */}
 
             <div className="container mx-auto p-6">
