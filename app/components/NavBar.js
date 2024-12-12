@@ -1,18 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useAuth } from "../context/AuthUserContext";
 export default function NavBar() {
     const { authUser, loading, signOut } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!authUser && !loading) {
-            router.push("/login");
-        }
-    });
 
     return (
         <header className="fixed w-full px-6 py-4 border-0 flex justify-between items-center bg-gradient-to-b from-blue-700 to-blue-600 text-white shadow-lg  text-white">
