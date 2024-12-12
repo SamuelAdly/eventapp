@@ -18,7 +18,7 @@ export default function MarketplaceCard({ item, onPurchase, onDelete, onUpdate, 
 
     return (
         <div className="bg-white text-gray-800 rounded-lg shadow-md overflow-hidden">
-            <img src={item.image} alt={item.name} className="w-full h-40 object-fill" />
+            <img src={item.image} alt={item.name} className="w-full h-40 object-scale-down p-4" />
             <div className="p-4">
                 {editMode ? (
                     <div>
