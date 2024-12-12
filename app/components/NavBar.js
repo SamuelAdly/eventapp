@@ -15,7 +15,7 @@ export default function NavBar() {
     });
 
     return (
-        <header className="fixed w-full px-6 py-4 border-0 flex justify-between items-center bg-gradient-to-br from-blue-500 to-indigo-600 text-white">
+        <header className="fixed w-full px-6 py-4 border-0 flex justify-between items-center bg-gradient-to-b from-blue-700 to-blue-600 text-white shadow-lg  text-white">
             <div className="max-w-screen-xl mx-auto flex justify-between items-center w-full">
                 <Link legacyBehavior href="/">
                     <a className="text-2xl font-bold">EventApp</a>
